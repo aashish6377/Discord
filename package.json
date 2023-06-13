@@ -16,6 +16,7 @@
     "dotenv": "^16.1.4",
     "googlethis": "^1.7.1",
     "mongoose": "^7.2.3",
+    "newsapi": "^2.4.1",
     "node-fetch": "^2.6.1"
   }
 }
