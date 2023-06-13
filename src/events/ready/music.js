@@ -5,6 +5,9 @@ const path = require("path");
 const fs = require("fs");
 
 const prefix = "?";
+const { SpotifyPlugin } = require("@distube/spotify");
+const { SoundCloudPlugin } = require("@distube/soundcloud");
+const { YtDlpPlugin } = require("@distube/yt-dlp");
 const config = require("../../../config.json");
 
 module.exports = (client) => {
@@ -31,6 +34,13 @@ module.exports = (client) => {
     emitNewSongOnly: true,
     emitAddSongWhenCreatingQueue: false,
     emitAddListWhenCreatingQueue: false,
+    plugins: [
+      new SpotifyPlugin({
+        emitEventsAfterFetching: true,
+      }),
+      new SoundCloudPlugin(),
+      new YtDlpPlugin(),
+    ],
   });
   client.on("ready", () => {
     console.log(`${client.user.tag} is ready to play music.`);
