@@ -1,3 +1,8 @@
+const axios = require("axios");
+require("dotenv").config();
+
+const TENOR_API_KEY = process.env.TENOR_API_KEY;
+
 module.exports = {
   name: "kaki-quotes",
   description: "Searches for quotes of Kaki",
@@ -28,6 +33,36 @@ module.exports = {
     ];
     // await interaction.editReply();
     // console.log(Quotes[Math.floor(Math.random() * 5)]);
-    await interaction.editReply(Quotes[Math.floor(Math.random() * 10)]);
+
+    try {
+      const quote = Quotes[Math.floor(Math.random() * 20)];
+      const response = await axios.get("https://g.tenor.com/v1/random", {
+        params: {
+          key: TENOR_API_KEY,
+          q: "Sadie Sink",
+          limit: 1,
+        },
+      });
+      const gifUrl = response.data.results[0].media[0].gif.url;
+
+      interaction.editReply({
+        embeds: [
+          {
+            type: "rich",
+            title: "Quote from Kaki",
+            description: quote,
+            color: 0x00ffff,
+            image: {
+              url: gifUrl,
+              height: 0,
+              width: 0,
+            },
+          },
+        ],
+      });
+    } catch (error) {
+      console.error("Error fetching Kaki's quote", error);
+      interaction.editReply("Error fetching Kaki's quote");
+    }
   },
 };
