@@ -2,6 +2,7 @@
 
 // API_URL =
 //   "https://api-inference.huggingface.co/models/Doge22/DialoGPT-medium-max";
+
 module.exports = (client) => {
   client.on("messageCreate", (message) => {
     if (message.author.bot) {

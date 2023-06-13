@@ -1,9 +1,3 @@
-const getGif = require("./gif");
-const axios = require("axios");
-require("dotenv").config();
-
-const TENOR_API_KEY = process.env.TENOR_API_KEY;
-
 module.exports = {
   name: "kaki-quotes",
   description: "Searches for quotes of Kaki",
@@ -24,45 +18,16 @@ module.exports = {
       "So I'm running in a new nike shoes for the first time and it feels like my feet are marshmallows",
       "Leave your lying boyfriend at home, grab your best friend and have a happy stranger things day",
       "I'm a lover not a fighter",
-      "the first thing people get wrong about me? Probably my age maybe. They recognize me from the show when i was 14 or 15. They think somehow they have aged and i haven't. But... I have.",
-      "my first big purchase... Was a car, that i got for myself on my 18th birthday. It was tesla it was exciting it was new was like i had it for myself and like i did it it was electric and i loved it and then i sold the car.. Because I didn't use the car.",
+      "The first thing people get wrong about me? Probably my age maybe. They recognize me from the show when i was 14 or 15. They think somehow they have aged and i haven't. But... I have.",
+      "My first big purchase... Was a car, that i got for myself on my 18th birthday. It was tesla it was exciting it was new was like i had it for myself and like i did it it was electric and i loved it and then i sold the car. Because I didn't use the car.",
       "I don't know if i can see it. It's like what if Netflix's watching",
       "Good morning. I have finally slept and now i think I'm officially at Japan time",
-      "I'm vegan like i should be more concerned",
-      "I'm at the hotel and i thought i should discuss it cause it's cracking me up. So i get here and there's this Fridge... With this melon inside of it. And i ate all of it and I'm hoping it was for me to eat and then i didn't just eat some kind of like highly celebrated melon",
+      "I'm vegan like i should be more concerned about a cattle running on a highway",
+      "I'm at the hotel and i thought i should discuss about it cause it's cracking me up. So i get here and there's this Fridge... With this melon inside of it. And i ate all of it and I'm hoping it was for me to eat and then i didn't just eat some kind of like highly celebrated melon",
       "I can't do it, it tastes like a sonic burger",
     ];
-    try {
-      const response = await axios.get("https://g.tenor.com/v1/random", {
-        params: {
-          key: TENOR_API_KEY,
-          q: "Sadie Sink",
-          limit: 1,
-        },
-      });
-      const gifUrl = response.data.results[0].media[0].gif.url;
-
-      // await interaction.editReply();
-      const q1 = Quotes[Math.floor(Math.random() * 10)];
-      // console.log(gifUrl);
-      interaction.editReply({
-        embeds: [
-          {
-            type: "rich",
-            title: `Quote from Sadie`,
-            description: `${q1}`,
-            color: 0x00ffff,
-            image: {
-              url: `${gifUrl}`,
-              height: 0,
-              width: 0,
-            },
-          },
-        ],
-      });
-    } catch (error) {
-      console.error("Error retrieving the GIF:", error);
-      interaction.reply("Sorry, an error occurred.");
-    }
+    // await interaction.editReply();
+    // console.log(Quotes[Math.floor(Math.random() * 5)]);
+    await interaction.editReply(Quotes[Math.floor(Math.random() * 10)]);
   },
 };
