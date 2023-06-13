@@ -4,7 +4,7 @@ const path = require("path");
 
 const fs = require("fs");
 
-const prefix = "!";
+const prefix = "?";
 const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
 const { YtDlpPlugin } = require("@distube/yt-dlp");
