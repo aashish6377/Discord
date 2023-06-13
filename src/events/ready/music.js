@@ -90,7 +90,7 @@ module.exports = (client) => {
     )
     .on("error", (channel, e) => {
       if (channel)
-        channel.send(
+        message.channel.send(
           `${client.emotes.error} | An error encountered: ${e
             .toString()
             .slice(0, 1974)}`
@@ -98,7 +98,7 @@ module.exports = (client) => {
       else console.error(e);
     })
     .on("empty", (channel) =>
-      channel.send("Voice channel is empty! Leaving the channel...")
+      message.channel.send("Voice channel is empty! Leaving the channel...")
     )
     .on("searchNoResult", (message, query) =>
       message.channel.send(
