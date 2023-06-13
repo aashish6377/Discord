@@ -4,7 +4,7 @@ const path = require("path");
 
 const fs = require("fs");
 
-const prefix = "?";
+const prefix = "!";
 const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
 const { YtDlpPlugin } = require("@distube/yt-dlp");
@@ -98,7 +98,7 @@ module.exports = (client) => {
         } songs) to queue\n${status(queue)}`
       )
     )
-    .on("error", (channel, e) => {
+    .on("error", (message, channel, e) => {
       if (channel)
         message.channel.send(
           `${client.emotes.error} | An error encountered: ${e
@@ -107,7 +107,7 @@ module.exports = (client) => {
         );
       else console.error(e);
     })
-    .on("empty", (channel) =>
+    .on("empty", (message) =>
       message.channel.send("Voice channel is empty! Leaving the channel...")
     )
     .on("searchNoResult", (message, query) =>
