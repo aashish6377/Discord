@@ -100,11 +100,15 @@ module.exports = (client) => {
     )
     .on("error", (message, channel, e) => {
       if (channel)
-        message.channel.send(
-          `${client.emotes.error} | An error encountered: ${e
-            .toString()
-            .slice(0, 1974)}`
-        );
+        try {
+          message.channel.send(
+            `${client.emotes.error} | An error encountered: ${e
+              .toString()
+              .slice(0, 1974)}`
+          );
+        } catch (error) {
+          message.channel.send("Sorry, some error occrued lmao ded");
+        }
       else console.error(e);
     })
     .on("empty", (message) =>
