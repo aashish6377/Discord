@@ -3,3 +3,4 @@ node_modules
 src/commands/misc/pin-message.js
 src/commands/misc/snipe.js
 src/utils/get
+*.jpg
